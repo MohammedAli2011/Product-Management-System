@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    outline: none;
+}
+
+button {
+    border: none !important;
+    color: white !important;
+}
+/*  */
+#btn:hover {
+    background-color: #ad0011 !important;
+}
+
+#btn-2:hover {
+    background-color: #0157d9 !important;
+}
+
+#btn-3:hover {
+    background-color: #0157d9 !important;
+}
+
+#btn-4:hover {
+    background-color: #ad0011 !important;
+}
