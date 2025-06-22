@@ -13,10 +13,10 @@
 
 <body class="bg-dark text-white m-0">
 
-    <div class="cruds">
+    <div class="cruds p-5">
         <div class="container">
             <div class="head text-uppercase text-center mb-5">
-                <h1 class="mt-5">Memo</h1>
+                <h1 class="">Memo</h1>
                 <p>Product Management System</p>
             </div>
             <div class="input d-flex justify-content-between flex-wrap mb-5">
@@ -44,7 +44,7 @@
                             <th class="p-2 fw-bold fs-4 text-secondary">Id</th>
                             <th class="p-2 fw-bold fs-4 text-secondary">Title</th>
                             <th class="p-2 fw-bold fs-4 text-secondary">Price</th>
-                            <th class="p-2 fw-bold fs-4 text-secondary">Txes</th>
+                            <th class="p-2 fw-bold fs-4 text-secondary">Taxes</th>
                             <th class="p-2 fw-bold fs-4 text-secondary">Ads</th>
                             <th class="p-2 fw-bold fs-4 text-secondary">Discount</th>
                             <th class="p-2 fw-bold fs-4 text-secondary">Total</th>
@@ -54,80 +54,13 @@
                             <th class="p-2 fw-bold fs-4 text-secondary">Delete</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr class="w-100">
-                            <td class="fw-bold fs-5">1</td>
-                            <td class="fw-bold fs-5">Iphone</td>
-                            <td class="fw-bold fs-5">100</td>
-                            <td class="fw-bold fs-5">100</td>
-                            <td class="fw-bold fs-5">100</td>
-                            <td class="fw-bold fs-5">100</td>
-                            <td class="fw-bold fs-5">200</td>
-                            <td class="fw-bold fs-5">13</td>
-                            <td class="fw-bold fs-5">phone</td>
-                            <td class="fw-bold fs-5"><button class="p-2 rounded bg-primary mt-3">Update</button></td>
-                            <td class="fw-bold fs-5"><button class="p-2 rounded bg-danger mt-3">Delete</button></td>
-                        </tr>
-                        <!--  -->
-                        <tr class="w-100">
-                            <td class="fw-bold fs-5">1</td>
-                            <td class="fw-bold fs-5">Iphone</td>
-                            <td class="fw-bold fs-5">100</td>
-                            <td class="fw-bold fs-5">100</td>
-                            <td class="fw-bold fs-5">100</td>
-                            <td class="fw-bold fs-5">100</td>
-                            <td class="fw-bold fs-5">200</td>
-                            <td class="fw-bold fs-5">13</td>
-                            <td class="fw-bold fs-5">phone</td>
-                            <td class="fw-bold fs-5"><button class="p-2 rounded bg-primary mt-3">Update</button></td>
-                            <td class="fw-bold fs-5"><button class="p-2 rounded bg-danger mt-3">Delete</button></td>
-                        </tr>
-                        <!--  -->
-                        <tr class="w-100">
-                            <td class="fw-bold fs-5">1</td>
-                            <td class="fw-bold fs-5">Iphone</td>
-                            <td class="fw-bold fs-5">100</td>
-                            <td class="fw-bold fs-5">100</td>
-                            <td class="fw-bold fs-5">100</td>
-                            <td class="fw-bold fs-5">100</td>
-                            <td class="fw-bold fs-5">200</td>
-                            <td class="fw-bold fs-5">13</td>
-                            <td class="fw-bold fs-5">phone</td>
-                            <td class="fw-bold fs-5"><button class="p-2 rounded bg-primary mt-3">Update</button></td>
-                            <td class="fw-bold fs-5"><button class="p-2 rounded bg-danger mt-3">Delete</button></td>
-                        </tr>
-                        <!--  -->
-                        <tr class="w-100">
-                            <td class="fw-bold fs-5">1</td>
-                            <td class="fw-bold fs-5">Iphone</td>
-                            <td class="fw-bold fs-5">100</td>
-                            <td class="fw-bold fs-5">100</td>
-                            <td class="fw-bold fs-5">100</td>
-                            <td class="fw-bold fs-5">100</td>
-                            <td class="fw-bold fs-5">200</td>
-                            <td class="fw-bold fs-5">13</td>
-                            <td class="fw-bold fs-5">phone</td>
-                            <td class="fw-bold fs-5"><button class="p-2 rounded bg-primary mt-3">Update</button></td>
-                            <td class="fw-bold fs-5"><button class="p-2 rounded bg-danger mt-3">Delete</button></td>
-                        </tr>
-                        <!--  -->
-                        <tr class="w-100">
-                            <td class="fw-bold fs-5">1</td>
-                            <td class="fw-bold fs-5">Iphone</td>
-                            <td class="fw-bold fs-5">100</td>
-                            <td class="fw-bold fs-5">100</td>
-                            <td class="fw-bold fs-5">100</td>
-                            <td class="fw-bold fs-5">100</td>
-                            <td class="fw-bold fs-5">200</td>
-                            <td class="fw-bold fs-5">13</td>
-                            <td class="fw-bold fs-5">phone</td>
-                            <td class="fw-bold fs-5"><button class="p-2 rounded bg-primary mt-3">Update</button></td>
-                            <td class="fw-bold fs-5"><button class="p-2 rounded bg-danger mt-3">Delete</button></td>
-                        </tr>
+                    <tbody id="tBody">
+                       
                     </tbody>
                 </table>
-                <button id="btn-4" class="p-2 rounded fw-bold bg-danger w-50 ms-auto me-auto mt-5 mb-5">Delete All
-                    Productes (100)</button>
+                <button onclick="deleteAll()" id="btn-4" class="p-2 rounded fw-bold bg-danger w-50 ms-auto me-auto mt-5 mb-5">Delete All
+                    Products (<span id="num" class="fw-bold "></span>)
+                </button>
             </div>
         </div>
     </div>
