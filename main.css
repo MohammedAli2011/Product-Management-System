@@ -16,18 +16,10 @@ button {
     color: white !important;
 }
 /*  */
-#btn:hover {
+.btn-d:hover {
     background-color: #ad0011 !important;
 }
 
-#btn-2:hover {
+.btn-p:hover {
     background-color: #0157d9 !important;
-}
-
-#btn-3:hover {
-    background-color: #0157d9 !important;
-}
-
-#btn-4:hover {
-    background-color: #ad0011 !important;
 }

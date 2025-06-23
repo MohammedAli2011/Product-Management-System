@@ -20,23 +20,23 @@
                 <p>Product Management System</p>
             </div>
             <div class="input d-flex justify-content-between flex-wrap mb-5">
-                <input id="title" placeholder="Title" class="w-100 p-2 rounded border border-0" type="text">
-                <input id="price" onkeyup="getTotal()" placeholder="Price" class="p-2 rounded border border-0 mt-3 mb-3" type="number">
-                <input id="taxes" onkeyup="getTotal()" placeholder="Taxes" class="p-2 border border-0 rounded mt-3 mb-3" type="number">
-                <input id="ads" onkeyup="getTotal()" placeholder="Ads" class="p-2 border border-0 rounded mt-3 mb-3" type="number">
-                <input id="discount" onkeyup="getTotal()" placeholder="Discount" class="p-2 border border-0 rounded mt-3 mb-3" type="number">
+                <input min="0" id="title" placeholder="Title" class="w-100 p-2 rounded border border-0" type="text">
+                <input min="0" id="price" onkeyup="getTotal()" placeholder="Price" class="p-2 rounded border border-0 mt-3 mb-3" type="number">
+                <input min="0" id="taxes" onkeyup="getTotal()" placeholder="Taxes" class="p-2 border border-0 rounded mt-3 mb-3" type="number">
+                <input min="0" id="ads" onkeyup="getTotal()" placeholder="Ads" class="p-2 border border-0 rounded mt-3 mb-3" type="number">
+                <input min="0" id="discount" onkeyup="getTotal()" placeholder="Discount" class="p-2 border border-0 rounded mt-3 mb-3" type="number">
                 <span id="totalC" class="p-2 rounded border border-0 mt-3 mb-3 bg-danger">Total : <span id="total"></span> </span>
-                <input id="count" placeholder="Count" class="w-100 p-2 rounded border border-0" type="number">
+                <input min="0" id="count" placeholder="Count" class="w-100 p-2 rounded border border-0" type="number">
                 <input id="category" placeholder="Category" class="w-100 p-2 rounded border border-0 mt-3 mb-3" type="text">
-                <button id="btn" class="w-100 p-2 rounded border border-0 text-white fw-bold bg-danger">Create</button>
+                <button id="btn" class="w-100 p-2 rounded border border-0 text-white fw-bold bg-danger btn-d">Create</button>
             </div>
             <hr>
             <div class="output d-flex justify-content-between flex-wrap mt-5 align-items-center">
                 <input class="w-100 p-2 rounded border border-0 mb-3" type="search" name="" id="search"
                     placeholder="Search">
-                <button id="btn-2" class="p-2 rounded fw-bold bg-primary" style="width: calc(50% - 40px);">Search By
+                <button id="btn-2" class="p-2 rounded btn-p fw-bold bg-primary" style="width: calc(50% - 40px);">Search By
                     Title</button>
-                <button id="btn-3" class="p-2 rounded fw-bold bg-primary" style="width: calc(50% - 40px);">Search By
+                <button id="btn-3" class="p-2 rounded btn-p fw-bold bg-primary" style="width: calc(50% - 40px);">Search By
                     Category</button>
                 <table class="w-100 text-center mt-5">
                     <thead class="mb-3">
@@ -48,7 +48,7 @@
                             <th class="p-2 fw-bold fs-4 text-secondary">Ads</th>
                             <th class="p-2 fw-bold fs-4 text-secondary">Discount</th>
                             <th class="p-2 fw-bold fs-4 text-secondary">Total</th>
-                            <th class="p-2 fw-bold fs-4 text-secondary">count</th>
+                            <th class="p-2 fw-bold fs-4 text-secondary">Quantity</th>
                             <th class="p-2 fw-bold fs-4 text-secondary">Category</th>
                             <th class="p-2 fw-bold fs-4 text-secondary">Update</th>
                             <th class="p-2 fw-bold fs-4 text-secondary">Delete</th>
@@ -58,7 +58,7 @@
                        
                     </tbody>
                 </table>
-                <button onclick="deleteAll()" id="btn-4" class="p-2 rounded fw-bold bg-danger w-50 ms-auto me-auto mt-5 mb-5">Delete All
+                <button onclick="deleteAll()" id="btn-4" class="p-2 btn-d rounded fw-bold bg-danger w-50 ms-auto me-auto mt-5 mb-5">Delete All
                     Products (<span id="num" class="fw-bold "></span>)
                 </button>
             </div>
