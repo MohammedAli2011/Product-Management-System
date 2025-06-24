@@ -55,35 +55,39 @@ btn.onclick = function () {
         count: count.value,
         category: category.value,
     };
+    if (title.value != "" && price.value != "" && count.value != "" && category.value != "") {
+        if (mode === "create") {
 
-    if (mode === "create") {
-        pro.push(products);
-        save();
+            if (taxes.value === "") {
+                products.taxes = 0;
+            };
 
-        if (title.value === "" || price.value === "" || count.value === "") {
-            pro.splice(temp, 1);
+            if (ads.value === "") {
+                products.ads = 0;
+            };
+
+            if (discount.value === "") {
+                products.discount = 0;
+            };
+
+            pro.push(products);
             save();
-            alert("You Should Write In Title & Price & Count");
+            clear();
+            read();
+        } else {
+            pro[temp] = products;
+            mode = "create";
+            clear();
+            read();
+            btn.innerHTML = "Create";
+            totalC.classList.remove("bg-success");
+            totalC.classList.add("bg-danger");
+            save();
         };
-
-        clear();
-        taxes.value = 0;
-        ads.value = 0;
-        discount.value = 0;
-        read();
     } else {
-        pro[temp] = products;
-        mode = "create";
-        clear();
-        taxes.value = 0;
-        ads.value = 0;
-        discount.value = 0;
-        read();
-        btn.innerHTML = "Create";
-        totalC.classList.remove("bg-success");
-        totalC.classList.add("bg-danger");
-        save();
+        alert("You Should Write In Title & Price & Count & Category");
     };
+
 };
 
 // taxes.value = 0;
@@ -111,28 +115,20 @@ function read() {
     for (let i = 0; i < pro.length; i++) {
         table += `
         <tr class="w-100">
-        <td class="fw-bold fs-5">${i + 1}</td>
-        <td class="fw-bold fs-5">${pro[i].title.toLowerCase()}</td>
-        <td class="fw-bold fs-5">${pro[i].price}</td>
-        <td class="fw-bold fs-5">${pro[i].taxes}</td>
-        <td class="fw-bold fs-5">${pro[i].ads}</td>
-        <td class="fw-bold fs-5">${pro[i].discount}</td>
-        <td class="fw-bold fs-5">${pro[i].total}</td>
-        <td class="fw-bold fs-5">${pro[i].count}</td>
-        <td class="fw-bold fs-5">${pro[i].category.toLowerCase()}</td>
-        <td class="fw-bold fs-5"><button onclick ="update(${i})" class="fs-5 p-2 btn btn-primary mt-3 btn-p">Update</button></td>
-        <td class="fw-bold fs-5"><div class="btn-group">
-            <button onclick ="remove(${i})" type="button" class="btn btn-danger p-2 mt-3 fs-5">Delete Product</button>
-            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split p-2 mt-3" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="visually-hidden">Toggle Dropdown</span>
-            </button>
-            <ul class="dropdown-menu p-0 bg-secondary rounded-0">
-            <li><input id="deleteCount" placeholder="Delete Count" class="w-100 p-2 border border-0 border-bottom border-black" type="number"></li>
-                <li><button onclick="dRemove(${i})" class="btn btn-black p-2 w-100 rounded-0 fs-5 border-top border-black">Delete</button></li>
-                </ul>
-            </div>
+            <td class="fw-bold fs-5 pt-2">${i + 1}</td>
+            <td class="fw-bold fs-5 pt-2">${pro[i].title.toLowerCase()}</td>
+            <td class="fw-bold fs-5 pt-2">${pro[i].price}</td>
+            <td class="fw-bold fs-5 pt-2">${pro[i].taxes}</td>
+            <td class="fw-bold fs-5 pt-2">${pro[i].ads}</td>
+            <td class="fw-bold fs-5 pt-2">${pro[i].discount}</td>
+            <td class="fw-bold fs-5 pt-2">${pro[i].total}</td>
+            <td class="fw-bold fs-5 pt-2">${pro[i].count}</td>
+            <td class="fw-bold fs-5 pt-2">${pro[i].category.toLowerCase()}</td>
+            <td class="fw-bold fs-5"><button onclick ="update(${i})" class="fs-5 p-2 btn btn-primary mt-3 btn-p">Update</button></td>
+            <td class="fw-bold fs-5">
+                <button onclick ="remove(${i})" type="button" class="btn btn-danger p-2 mt-3 fs-5">Delete Product</button>
             </td>
-            </tr>
+        </tr>
         `;
 
         document.getElementById("num").innerHTML = i + 1;
@@ -157,19 +153,6 @@ function remove(i) {
     pro.splice(i, 1);
     read();
     save();
-};
-
-function dRemove(i) {
-    pro[i].count -= document.getElementById("deleteCount").value;
-
-    /*     
-    if (pro[i].count === 0) {
-        pro.splice(i, 1);
-    }; 
-    */
-
-    save();
-    read();
 };
 
 // delete all button
@@ -252,14 +235,14 @@ function searchBy(value) {
                 table += `
                     <tr class="w-100">
                         <td class="fw-bold fs-5">${i + 1}</td>
-                        <td class="fw-bold fs-5">${pro[i].title}</td>
+                        <td class="fw-bold fs-5">${pro[i].title.toLowerCase()}</td>
                         <td class="fw-bold fs-5">${pro[i].price}</td>
                         <td class="fw-bold fs-5">${pro[i].taxes}</td>
                         <td class="fw-bold fs-5">${pro[i].ads}</td>
                         <td class="fw-bold fs-5">${pro[i].discount}</td>
                         <td class="fw-bold fs-5">${pro[i].total}</td>
                         <td class="fw-bold fs-5">${pro[i].count}</td>
-                        <td class="fw-bold fs-5">${pro[i].category}</td>
+                        <td class="fw-bold fs-5">${pro[i].category.toLowerCase()}</td>
                         <td class="fw-bold fs-5"><button onclick ="update(${i})" class="fs-5 p-2 btn btn-primary mt-3 btn-p">Update</button></td>
                         <td class="fw-bold fs-5">
                             <div class="btn-group">
