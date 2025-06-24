@@ -32,11 +32,11 @@
             </div>
             <hr>
             <div class="output d-flex justify-content-between flex-wrap mt-5 align-items-center">
-                <input class="w-100 p-2 rounded border border-0 mb-3" type="search" name="" id="search"
+                <input onkeyup="searchBy(this.value)" class="w-100 p-2 rounded border border-0 mb-3" type="search" name="" id="search"
                     placeholder="Search">
-                <button id="btn-2" class="p-2 rounded btn-p fw-bold bg-primary" style="width: calc(50% - 40px);">Search By
+                <button onclick="getSearchMode(this.id)" id="title" class="p-2 rounded btn-p fw-bold bg-primary" style="width: calc(50% - 40px);">Search By
                     Title</button>
-                <button id="btn-3" class="p-2 rounded btn-p fw-bold bg-primary" style="width: calc(50% - 40px);">Search By
+                <button onclick="getSearchMode(this.id)" id="category" class="p-2 rounded btn-p fw-bold bg-primary" style="width: calc(50% - 40px);">Search By
                     Category</button>
                 <table class="w-100 text-center mt-5">
                     <thead class="mb-3">

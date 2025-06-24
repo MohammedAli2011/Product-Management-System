@@ -86,9 +86,9 @@ btn.onclick = function () {
     };
 };
 
-taxes.value = 0;
-ads.value = 0;
-discount.value = 0;
+// taxes.value = 0;
+// ads.value = 0;
+// discount.value = 0;
 
 // clear inputs
 
@@ -112,14 +112,14 @@ function read() {
         table += `
         <tr class="w-100">
         <td class="fw-bold fs-5">${i + 1}</td>
-        <td class="fw-bold fs-5">${pro[i].title}</td>
+        <td class="fw-bold fs-5">${pro[i].title.toLowerCase()}</td>
         <td class="fw-bold fs-5">${pro[i].price}</td>
         <td class="fw-bold fs-5">${pro[i].taxes}</td>
         <td class="fw-bold fs-5">${pro[i].ads}</td>
         <td class="fw-bold fs-5">${pro[i].discount}</td>
         <td class="fw-bold fs-5">${pro[i].total}</td>
         <td class="fw-bold fs-5">${pro[i].count}</td>
-        <td class="fw-bold fs-5">${pro[i].category}</td>
+        <td class="fw-bold fs-5">${pro[i].category.toLowerCase()}</td>
         <td class="fw-bold fs-5"><button onclick ="update(${i})" class="fs-5 p-2 btn btn-primary mt-3 btn-p">Update</button></td>
         <td class="fw-bold fs-5"><div class="btn-group">
             <button onclick ="remove(${i})" type="button" class="btn btn-danger p-2 mt-3 fs-5">Delete Product</button>
@@ -161,7 +161,7 @@ function remove(i) {
 
 function dRemove(i) {
     pro[i].count -= document.getElementById("deleteCount").value;
-    
+
     /*     
     if (pro[i].count === 0) {
         pro.splice(i, 1);
@@ -196,4 +196,86 @@ function update(i) {
     totalC.classList.add("bg-success");
     mode = "update"
     temp = i
+};
+
+// search
+let searchMode = "title";
+let search = document.getElementById("search");
+function getSearchMode(id) {
+    if (id === "title") {
+        searchMode = "title";;
+        search.setAttribute("placeholder", "Search By Title");
+        search.value = "";
+        read();
+    } else {
+        searchMode = "category";
+        search.setAttribute("placeholder", "Search By Category");
+        search.value = "";
+        read();
+    };
+};
+
+function searchBy(value) {
+    let table = "";
+    for (let i = 0; i < pro.length; i++) {
+        if (searchMode === "title") {
+            if (pro[i].title.includes(value.toLowerCase())) {
+                table += `
+                    <tr class="w-100">
+                        <td class="fw-bold fs-5">${i + 1}</td>
+                        <td class="fw-bold fs-5">${pro[i].title}</td>
+                        <td class="fw-bold fs-5">${pro[i].price}</td>
+                        <td class="fw-bold fs-5">${pro[i].taxes}</td>
+                        <td class="fw-bold fs-5">${pro[i].ads}</td>
+                        <td class="fw-bold fs-5">${pro[i].discount}</td>
+                        <td class="fw-bold fs-5">${pro[i].total}</td>
+                        <td class="fw-bold fs-5">${pro[i].count}</td>
+                        <td class="fw-bold fs-5">${pro[i].category}</td>
+                        <td class="fw-bold fs-5"><button onclick ="update(${i})" class="fs-5 p-2 btn btn-primary mt-3 btn-p">Update</button></td>
+                        <td class="fw-bold fs-5">
+                            <div class="btn-group">
+                                <button onclick ="remove(${i})" type="button" class="btn btn-danger p-2 mt-3 fs-5">Delete Product</button>
+                                <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split p-2 mt-3" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="visually-hidden">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu p-0 bg-secondary rounded-0">
+                                    <li><input id="deleteCount" placeholder="Delete Count" class="w-100 p-2 border border-0 border-bottom border-black" type="number"></li>
+                                    <li><button onclick="dRemove(${i})" class="btn btn-black p-2 w-100 rounded-0 fs-5 border-top border-black">Delete</button></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>`;
+            };
+
+        } else {
+            if (pro[i].category.includes(value.toLowerCase())) {
+                table += `
+                    <tr class="w-100">
+                        <td class="fw-bold fs-5">${i + 1}</td>
+                        <td class="fw-bold fs-5">${pro[i].title}</td>
+                        <td class="fw-bold fs-5">${pro[i].price}</td>
+                        <td class="fw-bold fs-5">${pro[i].taxes}</td>
+                        <td class="fw-bold fs-5">${pro[i].ads}</td>
+                        <td class="fw-bold fs-5">${pro[i].discount}</td>
+                        <td class="fw-bold fs-5">${pro[i].total}</td>
+                        <td class="fw-bold fs-5">${pro[i].count}</td>
+                        <td class="fw-bold fs-5">${pro[i].category}</td>
+                        <td class="fw-bold fs-5"><button onclick ="update(${i})" class="fs-5 p-2 btn btn-primary mt-3 btn-p">Update</button></td>
+                        <td class="fw-bold fs-5">
+                            <div class="btn-group">
+                                <button onclick ="remove(${i})" type="button" class="btn btn-danger p-2 mt-3 fs-5">Delete Product</button>
+                                <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split p-2 mt-3" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="visually-hidden">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu p-0 bg-secondary rounded-0">
+                                    <li><input id="deleteCount" placeholder="Delete Count" class="w-100 p-2 border border-0 border-bottom border-black" type="number"></li>
+                                    <li><button onclick="dRemove(${i})" class="btn btn-black p-2 w-100 rounded-0 fs-5 border-top border-black">Delete</button></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>`;
+            };
+        };
+    };
+    tBody.innerHTML = table;
 };
